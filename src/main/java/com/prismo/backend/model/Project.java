@@ -38,6 +38,8 @@ public class Project {
     private ProjectStatus status;
 
     private Double progressPercentage;
+    
+    private Double budget;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Milestone> milestones;

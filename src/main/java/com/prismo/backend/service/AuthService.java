@@ -24,8 +24,8 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse register(RegisterRequest request) {
-        if (request.getRole() == Role.ADMIN) {
-            throw new IllegalArgumentException("Admin accounts cannot be created via registration. They must be managed directly in the database.");
+        if (request.getRole() == Role.CEO) {
+            throw new RuntimeException("CEO accounts cannot be created via public registration. Please contact support.");
         }
         
         if (repository.findByEmail(request.getEmail()).isPresent()) {

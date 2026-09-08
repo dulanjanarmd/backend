@@ -4,5 +4,6 @@ public enum Role {
     CEO,
     PROJECT_MANAGER,
     SITE_ENGINEER,
-    CLIENT
+    CLIENT,
+    QUANTITY_SURVEYOR
 }

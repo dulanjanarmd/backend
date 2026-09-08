@@ -1,8 +1,12 @@
+com\prismo\backend\dto\ResetPasswordRequest$ResetPasswordRequestBuilder.class
 com\prismo\backend\model\User$UserBuilder.class
 com\prismo\backend\model\Project$ProjectBuilder.class
 com\prismo\backend\repository\ProjectRepository.class
 com\prismo\backend\model\SiteIssue.class
 com\prismo\backend\dto\AuthResponse.class
+com\prismo\backend\dto\InquiryRequest.class
+com\prismo\backend\model\Inquiry$InquiryBuilder.class
+com\prismo\backend\repository\InquiryRepository.class
 com\prismo\backend\repository\ProgressLogRepository.class
 com\prismo\backend\model\Photo.class
 com\prismo\backend\model\Task.class
@@ -16,6 +20,7 @@ com\prismo\backend\security\SecurityConfig.class
 com\prismo\backend\model\Milestone$MilestoneBuilder.class
 com\prismo\backend\service\ProjectService.class
 com\prismo\backend\model\Role.class
+com\prismo\backend\model\Inquiry.class
 com\prismo\backend\service\AuthService.class
 com\prismo\backend\security\JwtUtil.class
 com\prismo\backend\dto\AuthRequest$AuthRequestBuilder.class
@@ -28,6 +33,7 @@ com\prismo\backend\model\Document.class
 com\prismo\backend\repository\ApprovalRequestRepository.class
 com\prismo\backend\controller\ClientController.class
 com\prismo\backend\model\ApprovalStatus.class
+com\prismo\backend\model\InquiryStatus.class
 com\prismo\backend\model\User.class
 com\prismo\backend\model\ProjectStatus.class
 com\prismo\backend\model\Milestone.class
@@ -39,6 +45,7 @@ com\prismo\backend\controller\ProgressController.class
 com\prismo\backend\model\Photo$PhotoBuilder.class
 com\prismo\backend\controller\ProjectController.class
 com\prismo\backend\model\Document$DocumentBuilder.class
+com\prismo\backend\service\InquiryService.class
 com\prismo\backend\controller\TaskController.class
 com\prismo\backend\controller\UserController.class
 com\prismo\backend\controller\AuthController.class
@@ -47,8 +54,10 @@ com\prismo\backend\model\ProgressLog$ProgressLogBuilder.class
 com\prismo\backend\dto\AuthRequest.class
 com\prismo\backend\model\ApprovalRequest$ApprovalRequestBuilder.class
 com\prismo\backend\repository\TaskRepository.class
+com\prismo\backend\dto\ResetPasswordRequest.class
 com\prismo\backend\repository\MilestoneRepository.class
 com\prismo\backend\repository\UserRepository.class
 com\prismo\backend\model\TaskStatus.class
+com\prismo\backend\controller\InquiryController.class
 com\prismo\backend\repository\SiteIssueRepository.class
 com\prismo\backend\service\TaskService.class

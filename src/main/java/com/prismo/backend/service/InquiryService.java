@@ -82,7 +82,7 @@ public class InquiryService {
         project.setLocation(inquiry.getLocation());
         project.setStatus(ProjectStatus.PLANNING);
         project.setBudget(inquiry.getBudget());
-        project.setStartDate(new java.util.Date());
+        project.setStartDate(java.time.LocalDate.now());
         
         project = projectRepository.save(project);
         

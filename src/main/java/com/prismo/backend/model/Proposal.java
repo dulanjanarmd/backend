@@ -13,32 +13,37 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "inquiries")
-public class Inquiry {
+@Table(name = "proposals")
+public class Proposal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String customerName;
-    private String phone;
-    private String email;
-    
-    private String projectType;
-    private String location;
-    
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "inquiry_id")
+    private Inquiry inquiry;
+
+    private String title;
+
+    private Integer version;
+
+    @Column(length = 5000)
+    private String scopeOfWork;
+
     @Column(length = 2000)
-    private String description;
-    
-    private String source;
-    
+    private String timeline;
+
+    @Column(length = 2000)
+    private String terms;
+
     @Enumerated(EnumType.STRING)
-    private InquiryStatus status;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "assigned_to_id")
-    private User assignedTo;
-    
+    private ProposalStatus status;
+
+    private Double totalAmount;
+
+    private LocalDateTime sentAt;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by_id")
     private User createdBy;
@@ -50,8 +55,11 @@ public class Inquiry {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
+        if (version == null) {
+            version = 1;
+        }
         if (status == null) {
-            status = InquiryStatus.NEW;
+            status = ProposalStatus.DRAFT;
         }
     }
 

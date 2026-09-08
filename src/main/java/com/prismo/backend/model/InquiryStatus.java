@@ -2,9 +2,10 @@ package com.prismo.backend.model;
 
 public enum InquiryStatus {
     NEW,
-    CONSULTATION_SCHEDULED,
+    IN_CONSULTATION,
     PROPOSAL_SENT,
-    CHANGES_REQUESTED,
+    NEGOTIATION,
     ACCEPTED,
-    REJECTED
+    REJECTED,
+    CLOSED
 }

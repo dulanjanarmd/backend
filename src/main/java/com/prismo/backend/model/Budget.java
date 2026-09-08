@@ -13,32 +13,25 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "inquiries")
-public class Inquiry {
+@Table(name = "budgets")
+public class Budget {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String customerName;
-    private String phone;
-    private String email;
-    
-    private String projectType;
-    private String location;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "proposal_id")
+    private Proposal proposal;
+
+    private Double summaryAmount;
+    private String currency;
     
     @Column(length = 2000)
-    private String description;
+    private String notes;
     
-    private String source;
-    
-    @Enumerated(EnumType.STRING)
-    private InquiryStatus status;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "assigned_to_id")
-    private User assignedTo;
-    
+    private String fileUrl; // BOQ
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by_id")
     private User createdBy;
@@ -50,8 +43,8 @@ public class Inquiry {
     protected void onCreate() {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
-        if (status == null) {
-            status = InquiryStatus.NEW;
+        if (currency == null) {
+            currency = "USD";
         }
     }
 
