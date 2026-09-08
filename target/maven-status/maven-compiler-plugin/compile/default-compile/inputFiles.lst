@@ -9,6 +9,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\ApprovalStatus.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\Milestone.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\RegisterRequest.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\TaskController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\ProjectStatus.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\TaskStatus.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\AuthService.java
@@ -16,6 +17,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\UserRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\DocumentRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\security\SecurityConfig.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\TaskService.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\ApprovalRequestRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\Role.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\User.java
@@ -24,6 +26,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\Project.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\AuthResponse.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\MilestoneRepository.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\ProgressController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\Task.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\security\JwtAuthFilter.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\ApprovalRequest.java
@@ -31,5 +34,8 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\ProjectService.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\config\DatabaseSeeder.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\PhotoRepository.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\ClientService.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\ProgressService.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\ClientController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\ProgressLog.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\SiteIssue.java
