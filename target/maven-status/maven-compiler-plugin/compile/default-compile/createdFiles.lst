@@ -40,9 +40,11 @@ com\prismo\backend\model\Photo$PhotoBuilder.class
 com\prismo\backend\controller\ProjectController.class
 com\prismo\backend\model\Document$DocumentBuilder.class
 com\prismo\backend\controller\TaskController.class
+com\prismo\backend\controller\UserController.class
 com\prismo\backend\controller\AuthController.class
 com\prismo\backend\model\SiteIssue$SiteIssueBuilder.class
 com\prismo\backend\model\ProgressLog$ProgressLogBuilder.class
+com\prismo\backend\service\UserService.class
 com\prismo\backend\dto\AuthRequest.class
 com\prismo\backend\model\ApprovalRequest$ApprovalRequestBuilder.class
 com\prismo\backend\repository\TaskRepository.class
