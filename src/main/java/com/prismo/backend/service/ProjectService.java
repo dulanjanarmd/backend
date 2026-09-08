@@ -22,6 +22,9 @@ public class ProjectService {
     }
 
     public Project createProject(Project project) {
+        if (project.getMilestones() != null) {
+            project.getMilestones().forEach(m -> m.setProject(project));
+        }
         return repository.save(project);
     }
 
