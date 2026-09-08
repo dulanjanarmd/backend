@@ -3,6 +3,8 @@ package com.prismo.backend.service;
 import com.prismo.backend.dto.AuthRequest;
 import com.prismo.backend.dto.AuthResponse;
 import com.prismo.backend.dto.RegisterRequest;
+import com.prismo.backend.dto.ResetPasswordRequest;
+import com.prismo.backend.model.Role;
 import com.prismo.backend.model.User;
 import com.prismo.backend.repository.UserRepository;
 import com.prismo.backend.security.JwtUtil;
@@ -22,6 +24,10 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public AuthResponse register(RegisterRequest request) {
+        if (request.getRole() == Role.ADMIN) {
+            throw new IllegalArgumentException("Admin accounts cannot be created via registration. They must be managed directly in the database.");
+        }
+        
         if (repository.findByEmail(request.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Email already in use");
         }
@@ -61,5 +67,13 @@ public class AuthService {
                 .email(user.getEmail())
                 .role(user.getRole().name())
                 .build();
+    }
+
+    public void resetPassword(ResetPasswordRequest request) {
+        var user = repository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("User not found with email: " + request.getEmail()));
+        
+        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        repository.save(user);
     }
 }
