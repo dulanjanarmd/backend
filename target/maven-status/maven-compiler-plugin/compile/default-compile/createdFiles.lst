@@ -29,6 +29,7 @@ com\prismo\backend\model\Milestone$MilestoneBuilder.class
 com\prismo\backend\repository\ConsultationNoteRepository.class
 com\prismo\backend\service\ProjectService.class
 com\prismo\backend\model\Role.class
+com\prismo\backend\dto\ForgotPasswordRequest.class
 com\prismo\backend\model\Inquiry.class
 com\prismo\backend\service\AuthService.class
 com\prismo\backend\security\JwtUtil.class
@@ -39,6 +40,7 @@ com\prismo\backend\model\Budget.class
 com\prismo\backend\dto\RegisterRequest$RegisterRequestBuilder.class
 com\prismo\backend\dto\RegisterRequest.class
 com\prismo\backend\repository\DocumentRepository.class
+com\prismo\backend\service\EmailService.class
 com\prismo\backend\model\Document.class
 com\prismo\backend\repository\ApprovalRequestRepository.class
 com\prismo\backend\controller\ClientController.class
@@ -77,6 +79,7 @@ com\prismo\backend\repository\UserRepository.class
 com\prismo\backend\model\TaskStatus.class
 com\prismo\backend\repository\ProposalResponseRepository.class
 com\prismo\backend\controller\InquiryController.class
+com\prismo\backend\dto\ForgotPasswordRequest$ForgotPasswordRequestBuilder.class
 com\prismo\backend\repository\SiteIssueRepository.class
 com\prismo\backend\service\TaskService.class
 com\prismo\backend\model\Proposal$ProposalBuilder.class

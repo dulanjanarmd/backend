@@ -36,6 +36,9 @@ public class User implements UserDetails {
     @Column(length = 50)
     private Role role;
 
+    private String resetOtp;
+    private java.time.LocalDateTime otpExpiryTime;
+
     @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {

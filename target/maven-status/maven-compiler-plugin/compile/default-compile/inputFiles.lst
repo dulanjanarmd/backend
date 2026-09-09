@@ -29,6 +29,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\security\JwtAuthFilter.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\ApprovalRequest.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\security\JwtUtil.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\ForgotPasswordRequest.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\PhotoRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\ProposalDocumentRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\ClientService.java
@@ -57,6 +58,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\ProjectService.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\config\DatabaseSeeder.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\ProgressService.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\EmailService.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\ProgressLog.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\ProposalResponseRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\SiteIssue.java
