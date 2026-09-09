@@ -33,6 +33,7 @@ public class User implements UserDetails {
     private String password;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 50)
     private Role role;
 
     @Override

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,18 +22,33 @@ public class DatabaseSeeder implements CommandLineRunner {
     private final ProgressLogRepository progressLogRepository;
     private final ApprovalRequestRepository approvalRequestRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JdbcTemplate jdbcTemplate;
 
     @Override
     public void run(String... args) {
-        if (userRepository.count() == 0) {
+        try {
+            jdbcTemplate.execute("ALTER TABLE users MODIFY role VARCHAR(50)");
+        } catch (Exception e) {
+            System.out.println("Could not alter users table: " + e.getMessage());
+        }
+        
+        if (userRepository.findByEmail("admin@prismo.com").isEmpty()) {
+            String defaultPassword = passwordEncoder.encode("password123");
+            User admin = User.builder().name("System Admin").email("admin@prismo.com").password(defaultPassword).role(Role.ADMIN).build();
+            userRepository.save(admin);
+            System.out.println("Admin user force seeded.");
+        }
+        
+        if (userRepository.count() <= 1) {
             String defaultPassword = passwordEncoder.encode("password123");
 
             User ceo = User.builder().name("CEO User").email("ceo@prismo.com").password(defaultPassword).role(Role.CEO).build();
+            User admin = User.builder().name("System Admin").email("admin@prismo.com").password(defaultPassword).role(Role.ADMIN).build();
             User pm = User.builder().name("Project Manager 1").email("pm@prismo.com").password(defaultPassword).role(Role.PROJECT_MANAGER).build();
             User engineer = User.builder().name("Site Engineer A").email("engineer@prismo.com").password(defaultPassword).role(Role.SITE_ENGINEER).build();
             User client = User.builder().name("Client Corp").email("client@company.com").password(defaultPassword).role(Role.CLIENT).build();
 
-            userRepository.saveAll(List.of(ceo, pm, engineer, client));
+            userRepository.saveAll(List.of(ceo, admin, pm, engineer, client));
 
             Project p1 = Project.builder()
                     .name("Colombo Commercial Complex")

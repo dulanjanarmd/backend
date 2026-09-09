@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ProposalRepository extends JpaRepository<Proposal, Long> {
     Optional<Proposal> findByInquiryId(Long inquiryId);
-    List<Proposal> findByInquiryCustomerEmail(String email);
+    List<Proposal> findByInquiryEmail(String email);
 }
