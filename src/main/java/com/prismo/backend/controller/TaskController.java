@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/tasks")
@@ -26,5 +27,27 @@ public class TaskController {
     @PreAuthorize("hasAnyRole('CEO', 'PROJECT_MANAGER', 'SITE_ENGINEER')")
     public ResponseEntity<List<Task>> getTasksByProject(@PathVariable Long projectId) {
         return ResponseEntity.ok(service.getTasksByProject(projectId));
+    }
+
+    @PostMapping
+    @PreAuthorize("hasAnyRole('PROJECT_MANAGER', 'CEO')")
+    public ResponseEntity<Task> createTask(@RequestBody Map<String, Object> body) {
+        Task task = new Task();
+        task.setTitle((String) body.get("title"));
+        task.setDescription((String) body.get("description"));
+        task.setPriority((String) body.get("priority"));
+        String dueDateStr = (String) body.get("dueDate");
+        if (dueDateStr != null && !dueDateStr.isEmpty()) {
+            task.setDueDate(java.time.LocalDate.parse(dueDateStr));
+        }
+        Long projectId = Long.valueOf(body.get("projectId").toString());
+        Long assigneeId = Long.valueOf(body.get("assigneeId").toString());
+        return ResponseEntity.ok(service.createTask(projectId, assigneeId, task));
+    }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('PROJECT_MANAGER', 'SITE_ENGINEER', 'CEO')")
+    public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
+        return ResponseEntity.ok(service.updateTask(id, task));
     }
 }

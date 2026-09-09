@@ -10,6 +10,7 @@ com\prismo\backend\model\Inquiry$InquiryBuilder.class
 com\prismo\backend\repository\InquiryRepository.class
 com\prismo\backend\model\ProposalVersion$ProposalVersionBuilder.class
 com\prismo\backend\repository\ProgressLogRepository.class
+com\prismo\backend\controller\MilestoneController.class
 com\prismo\backend\model\ProposalVersion.class
 com\prismo\backend\model\ConsultationNote$ConsultationNoteBuilder.class
 com\prismo\backend\model\Proposal.class
@@ -36,6 +37,7 @@ com\prismo\backend\security\JwtUtil.class
 com\prismo\backend\dto\AuthRequest$AuthRequestBuilder.class
 com\prismo\backend\model\Task$TaskBuilder.class
 com\prismo\backend\security\UserDetailsServiceImpl.class
+com\prismo\backend\service\MilestoneService.class
 com\prismo\backend\model\Budget.class
 com\prismo\backend\dto\RegisterRequest$RegisterRequestBuilder.class
 com\prismo\backend\dto\RegisterRequest.class
