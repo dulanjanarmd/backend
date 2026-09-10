@@ -25,6 +25,7 @@ com\prismo\backend\model\ProposalStatus.class
 com\prismo\backend\BackendApplication.class
 com\prismo\backend\repository\PhotoRepository.class
 com\prismo\backend\config\DatabaseSeeder.class
+com\prismo\backend\config\WebConfig.class
 com\prismo\backend\security\SecurityConfig.class
 com\prismo\backend\model\Milestone$MilestoneBuilder.class
 com\prismo\backend\repository\ConsultationNoteRepository.class
@@ -45,6 +46,7 @@ com\prismo\backend\repository\DocumentRepository.class
 com\prismo\backend\service\EmailService.class
 com\prismo\backend\model\Document.class
 com\prismo\backend\repository\ApprovalRequestRepository.class
+com\prismo\backend\controller\FileUploadController.class
 com\prismo\backend\controller\ClientController.class
 com\prismo\backend\repository\BudgetRepository.class
 com\prismo\backend\model\ApprovalStatus.class
@@ -54,6 +56,7 @@ com\prismo\backend\model\Budget$BudgetBuilder.class
 com\prismo\backend\model\User.class
 com\prismo\backend\model\ProposalResponse$ProposalResponseBuilder.class
 com\prismo\backend\model\ProjectStatus.class
+com\prismo\backend\service\FileStorageService.class
 com\prismo\backend\model\Milestone.class
 com\prismo\backend\repository\ProposalDocumentRepository.class
 com\prismo\backend\model\ConsultationNote.class

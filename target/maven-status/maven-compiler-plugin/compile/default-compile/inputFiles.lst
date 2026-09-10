@@ -34,6 +34,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\PhotoRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\ProposalDocumentRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\ClientService.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\FileUploadController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\InquiryStatus.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\ClientController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\DebugController.java
@@ -46,6 +47,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\ProgressLogRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\InquiryService.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\ProposalRepository.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\FileStorageService.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\Milestone.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\RegisterRequest.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\TaskController.java
@@ -56,6 +58,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\InquiryController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\AuthResponse.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\ProgressController.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\config\WebConfig.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\Inquiry.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\ConsultationNote.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\ProjectService.java

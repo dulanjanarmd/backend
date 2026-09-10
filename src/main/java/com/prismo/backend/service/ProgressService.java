@@ -34,6 +34,9 @@ public class ProgressService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
         log.setProject(project);
         log.setSiteEngineer(engineer);
+        if (log.getPhotos() != null) {
+            log.getPhotos().forEach(photo -> photo.setProgressLog(log));
+        }
         return repository.save(log);
     }
 }
