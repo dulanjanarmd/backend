@@ -42,7 +42,8 @@ public class TaskController {
         }
         Long projectId = Long.valueOf(body.get("projectId").toString());
         Long assigneeId = Long.valueOf(body.get("assigneeId").toString());
-        return ResponseEntity.ok(service.createTask(projectId, assigneeId, task));
+        Long milestoneId = body.get("milestoneId") != null ? Long.valueOf(body.get("milestoneId").toString()) : null;
+        return ResponseEntity.ok(service.createTask(projectId, assigneeId, milestoneId, task));
     }
 
     @PutMapping("/{id}")

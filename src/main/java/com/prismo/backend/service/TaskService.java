@@ -7,6 +7,8 @@ import com.prismo.backend.model.User;
 import com.prismo.backend.repository.ProjectRepository;
 import com.prismo.backend.repository.TaskRepository;
 import com.prismo.backend.repository.UserRepository;
+import com.prismo.backend.model.Milestone;
+import com.prismo.backend.repository.MilestoneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,7 @@ public class TaskService {
     private final TaskRepository repository;
     private final ProjectRepository projectRepository;
     private final UserRepository userRepository;
+    private final MilestoneRepository milestoneRepository;
 
     public List<Task> getAllTasks() {
         return repository.findAll();
@@ -28,13 +31,17 @@ public class TaskService {
         return repository.findByProjectId(projectId);
     }
 
-    public Task createTask(Long projectId, Long assigneeId, Task task) {
+    public Task createTask(Long projectId, Long assigneeId, Long milestoneId, Task task) {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project not found"));
         User assignee = userRepository.findById(assigneeId)
                 .orElseThrow(() -> new RuntimeException("Assignee not found"));
         task.setProject(project);
         task.setAssignee(assignee);
+        if (milestoneId != null) {
+            Milestone milestone = milestoneRepository.findById(milestoneId).orElse(null);
+            task.setMilestone(milestone);
+        }
         task.setStatus(TaskStatus.TO_DO);
         return repository.save(task);
     }

@@ -1,10 +1,12 @@
 package com.prismo.backend.controller;
 
 import com.prismo.backend.model.ProgressLog;
+import com.prismo.backend.model.User;
 import com.prismo.backend.service.ProgressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,5 +28,14 @@ public class ProgressController {
     @PreAuthorize("hasAnyRole('CEO', 'PROJECT_MANAGER', 'SITE_ENGINEER')")
     public ResponseEntity<List<ProgressLog>> getLogsByProject(@PathVariable Long projectId) {
         return ResponseEntity.ok(service.getLogsByProject(projectId));
+    }
+
+    @PostMapping
+    @PreAuthorize("hasRole('SITE_ENGINEER')")
+    public ResponseEntity<ProgressLog> createLog(
+            @RequestBody ProgressLog log,
+            @RequestParam Long projectId,
+            @AuthenticationPrincipal User currentUser) {
+        return ResponseEntity.ok(service.createLog(projectId, currentUser.getId(), log));
     }
 }

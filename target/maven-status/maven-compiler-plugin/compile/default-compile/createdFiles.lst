@@ -49,6 +49,7 @@ com\prismo\backend\controller\ClientController.class
 com\prismo\backend\repository\BudgetRepository.class
 com\prismo\backend\model\ApprovalStatus.class
 com\prismo\backend\model\InquiryStatus.class
+com\prismo\backend\controller\DebugController.class
 com\prismo\backend\model\Budget$BudgetBuilder.class
 com\prismo\backend\model\User.class
 com\prismo\backend\model\ProposalResponse$ProposalResponseBuilder.class
