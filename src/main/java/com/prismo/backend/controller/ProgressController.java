@@ -35,7 +35,8 @@ public class ProgressController {
     public ResponseEntity<ProgressLog> createLog(
             @RequestBody ProgressLog log,
             @RequestParam Long projectId,
+            @RequestParam(required = false) Long taskId,
             @AuthenticationPrincipal User currentUser) {
-        return ResponseEntity.ok(service.createLog(projectId, currentUser.getId(), log));
+        return ResponseEntity.ok(service.createLog(projectId, taskId, currentUser.getId(), log));
     }
 }

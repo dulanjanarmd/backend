@@ -39,6 +39,23 @@ public class ProgressLog {
     @JoinColumn(name = "site_engineer_id")
     private User siteEngineer;
 
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
+
+    @Column(columnDefinition = "TEXT")
+    private String equipmentUsed;
+
+    @Column(columnDefinition = "TEXT")
+    private String materialsDelivered;
+
+    @Column(columnDefinition = "TEXT")
+    private String safetyIncidents;
+
+    private Integer delayHours;
+
+    private Double temperature;
+
     @OneToMany(mappedBy = "progressLog", cascade = CascadeType.ALL)
     private List<Photo> photos;
 }
