@@ -47,4 +47,41 @@ public class ProgressService {
         }
         return repository.save(log);
     }
+
+    public ProgressLog updateLog(Long logId, Long taskId, ProgressLog updatedLog) {
+        ProgressLog existingLog = repository.findById(logId)
+                .orElseThrow(() -> new RuntimeException("Log not found"));
+        
+        existingLog.setDate(updatedLog.getDate());
+        existingLog.setWeather(updatedLog.getWeather());
+        existingLog.setTemperature(updatedLog.getTemperature());
+        existingLog.setManpower(updatedLog.getManpower());
+        existingLog.setPercentageCompleted(updatedLog.getPercentageCompleted());
+        existingLog.setWorkDone(updatedLog.getWorkDone());
+        existingLog.setEquipmentUsed(updatedLog.getEquipmentUsed());
+        existingLog.setMaterialsDelivered(updatedLog.getMaterialsDelivered());
+        existingLog.setSafetyIncidents(updatedLog.getSafetyIncidents());
+        existingLog.setDelayHours(updatedLog.getDelayHours());
+
+        if (taskId != null) {
+            Task task = taskRepository.findById(taskId).orElse(null);
+            existingLog.setTask(task);
+        } else {
+            existingLog.setTask(null);
+        }
+
+        if (updatedLog.getPhotos() != null) {
+            // Simplify photo handling by replacing old ones (in a real app you might want smart merging)
+            existingLog.getPhotos().clear();
+            updatedLog.getPhotos().forEach(photo -> {
+                photo.setProgressLog(existingLog);
+                existingLog.getPhotos().add(photo);
+            });
+        }
+        return repository.save(existingLog);
+    }
+
+    public void deleteLog(Long logId) {
+        repository.deleteById(logId);
+    }
 }

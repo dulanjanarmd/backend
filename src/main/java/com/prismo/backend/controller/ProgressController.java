@@ -39,4 +39,20 @@ public class ProgressController {
             @AuthenticationPrincipal User currentUser) {
         return ResponseEntity.ok(service.createLog(projectId, taskId, currentUser.getId(), log));
     }
+
+    @PutMapping("/{logId}")
+    @PreAuthorize("hasRole('SITE_ENGINEER')")
+    public ResponseEntity<ProgressLog> updateLog(
+            @PathVariable Long logId,
+            @RequestParam(required = false) Long taskId,
+            @RequestBody ProgressLog log) {
+        return ResponseEntity.ok(service.updateLog(logId, taskId, log));
+    }
+
+    @DeleteMapping("/{logId}")
+    @PreAuthorize("hasRole('SITE_ENGINEER')")
+    public ResponseEntity<?> deleteLog(@PathVariable Long logId) {
+        service.deleteLog(logId);
+        return ResponseEntity.ok().build();
+    }
 }
