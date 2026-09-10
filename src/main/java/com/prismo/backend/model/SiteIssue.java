@@ -22,6 +22,10 @@ public class SiteIssue {
     @JoinColumn(name = "project_id")
     private Project project;
 
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
+
     @Column(columnDefinition = "TEXT")
     private String description;
 
@@ -29,5 +33,19 @@ public class SiteIssue {
     @JoinColumn(name = "reported_by_id")
     private User reportedBy;
 
+    @ManyToOne
+    @JoinColumn(name = "assignee_id")
+    private User assignee;
+
+    private String title;
+    private String severity;
     private String status;
+
+    @Column(name = "created_at")
+    private java.time.LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        if (createdAt == null) createdAt = java.time.LocalDateTime.now();
+    }
 }
