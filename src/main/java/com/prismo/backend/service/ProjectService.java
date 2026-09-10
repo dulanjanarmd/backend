@@ -2,8 +2,14 @@ package com.prismo.backend.service;
 
 import com.prismo.backend.model.Project;
 import com.prismo.backend.repository.ProjectRepository;
+import com.prismo.backend.repository.TaskRepository;
+import com.prismo.backend.repository.ApprovalRequestRepository;
+import com.prismo.backend.repository.SiteIssueRepository;
+import com.prismo.backend.repository.ProgressLogRepository;
+import com.prismo.backend.repository.DocumentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,6 +18,11 @@ import java.util.List;
 public class ProjectService {
 
     private final ProjectRepository repository;
+    private final TaskRepository taskRepository;
+    private final ApprovalRequestRepository approvalRepository;
+    private final SiteIssueRepository issueRepository;
+    private final ProgressLogRepository logRepository;
+    private final DocumentRepository documentRepository;
 
     public List<Project> getAllProjects() {
         return repository.findAll();
@@ -44,7 +55,13 @@ public class ProjectService {
         return repository.save(project);
     }
 
+    @Transactional
     public void deleteProject(Long id) {
+        taskRepository.deleteAll(taskRepository.findByProjectId(id));
+        approvalRepository.deleteAll(approvalRepository.findByProjectId(id));
+        issueRepository.deleteAll(issueRepository.findByProjectId(id));
+        logRepository.deleteAll(logRepository.findByProjectId(id));
+        documentRepository.deleteAll(documentRepository.findByProjectId(id));
         repository.deleteById(id);
     }
 }
