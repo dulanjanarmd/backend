@@ -41,6 +41,11 @@ public class SiteIssue {
     private String severity;
     private String status;
 
+    private String location;
+    private String equipmentInvolved;
+    private Integer estimatedDelayDays;
+    private String photoUrl;
+
     @Column(name = "created_at")
     private java.time.LocalDateTime createdAt;
 

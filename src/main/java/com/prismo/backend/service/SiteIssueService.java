@@ -23,6 +23,9 @@ public class SiteIssueService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private com.prismo.backend.repository.TaskRepository taskRepository;
+
     public List<SiteIssue> getIssuesByProject(Long projectId) {
         return repository.findByProjectId(projectId);
     }
@@ -31,11 +34,16 @@ public class SiteIssueService {
         return repository.findAll();
     }
 
-    public SiteIssue createIssue(Long projectId, Long reportedById, SiteIssue issue) {
+    public SiteIssue createIssue(Long projectId, Long taskId, Long reportedById, SiteIssue issue) {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project not found"));
         User user = userRepository.findById(reportedById)
                 .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (taskId != null) {
+            com.prismo.backend.model.Task task = taskRepository.findById(taskId).orElse(null);
+            issue.setTask(task);
+        }
 
         issue.setProject(project);
         issue.setReportedBy(user);

@@ -29,9 +29,10 @@ public class SiteIssueController {
     @PostMapping
     public ResponseEntity<SiteIssue> createIssue(
             @RequestParam Long projectId,
+            @RequestParam(required = false) Long taskId,
             @RequestBody SiteIssue issue,
             @AuthenticationPrincipal User currentUser) {
-        return ResponseEntity.ok(service.createIssue(projectId, currentUser.getId(), issue));
+        return ResponseEntity.ok(service.createIssue(projectId, taskId, currentUser.getId(), issue));
     }
 
     @PutMapping("/{id}/status")
