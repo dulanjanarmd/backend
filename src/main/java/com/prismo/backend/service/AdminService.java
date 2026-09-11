@@ -71,20 +71,22 @@ public class AdminService {
             user.setEmail(request.getEmail());
         }
         if (request.getRole() != null) {
-            if (user.getRole() == Role.ADMIN && request.getRole() != Role.ADMIN) {
-                throw new IllegalArgumentException("Cannot change admin role");
-            }
-            
-            if (request.getRole() == Role.CEO && user.getRole() != Role.CEO) {
-                boolean ceoExists = userRepository.findAll().stream()
-                        .filter(u -> u.getId() != id)
-                        .anyMatch(u -> u.getRole() == Role.CEO);
-                if (ceoExists) {
-                    throw new IllegalArgumentException("CEO account already exists. System can have only one CEO.");
+            // Prevent role changes for CEO and Admin
+            if (user.getRole() == Role.ADMIN) {
+                // Ignore role change for admin
+            } else if (user.getRole() == Role.CEO) {
+                // Ignore role change for CEO
+            } else {
+                if (request.getRole() == Role.CEO) {
+                    boolean ceoExists = userRepository.findAll().stream()
+                            .filter(u -> u.getId() != id)
+                            .anyMatch(u -> u.getRole() == Role.CEO);
+                    if (ceoExists) {
+                        throw new IllegalArgumentException("CEO account already exists. System can have only one CEO.");
+                    }
                 }
+                user.setRole(request.getRole());
             }
-            
-            user.setRole(request.getRole());
         }
         
         return userRepository.save(user);
