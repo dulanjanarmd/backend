@@ -64,6 +64,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\InquiryRequest.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\InquiryController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\model\IssueComment.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\ApprovalRequestDTO.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\AuthResponse.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\ProgressController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\config\WebConfig.java

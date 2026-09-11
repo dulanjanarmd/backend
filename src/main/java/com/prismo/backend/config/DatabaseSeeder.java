@@ -32,21 +32,34 @@ public class DatabaseSeeder implements CommandLineRunner {
             System.out.println("Could not alter users table: " + e.getMessage());
         }
         
+        try {
+            jdbcTemplate.execute("ALTER TABLE users ADD COLUMN status VARCHAR(20) DEFAULT 'ACTIVE'");
+        } catch (Exception e) {
+            System.out.println("Could not add status column to users table: " + e.getMessage());
+        }
+        
         if (userRepository.findByEmail("admin@prismo.com").isEmpty()) {
             String defaultPassword = passwordEncoder.encode("password123");
-            User admin = User.builder().name("System Admin").email("admin@prismo.com").password(defaultPassword).role(Role.ADMIN).build();
+            User admin = User.builder().name("System Admin").email("admin@prismo.com").password(defaultPassword).role(Role.ADMIN).status(UserStatus.ACTIVE).build();
             userRepository.save(admin);
             System.out.println("Admin user force seeded.");
+        } else {
+            var admin = userRepository.findByEmail("admin@prismo.com").get();
+            if (admin.getStatus() == null) {
+                admin.setStatus(UserStatus.ACTIVE);
+                userRepository.save(admin);
+                System.out.println("Admin user status updated.");
+            }
         }
         
         if (userRepository.count() <= 1) {
             String defaultPassword = passwordEncoder.encode("password123");
 
-            User ceo = User.builder().name("CEO User").email("ceo@prismo.com").password(defaultPassword).role(Role.CEO).build();
-            User admin = User.builder().name("System Admin").email("admin@prismo.com").password(defaultPassword).role(Role.ADMIN).build();
-            User pm = User.builder().name("Project Manager 1").email("pm@prismo.com").password(defaultPassword).role(Role.PROJECT_MANAGER).build();
-            User engineer = User.builder().name("Site Engineer A").email("engineer@prismo.com").password(defaultPassword).role(Role.SITE_ENGINEER).build();
-            User client = User.builder().name("Client Corp").email("client@company.com").password(defaultPassword).role(Role.CLIENT).build();
+            User ceo = User.builder().name("CEO User").email("ceo@prismo.com").password(defaultPassword).role(Role.CEO).status(UserStatus.ACTIVE).build();
+            User admin = User.builder().name("System Admin").email("admin@prismo.com").password(defaultPassword).role(Role.ADMIN).status(UserStatus.ACTIVE).build();
+            User pm = User.builder().name("Project Manager 1").email("pm@prismo.com").password(defaultPassword).role(Role.PROJECT_MANAGER).status(UserStatus.ACTIVE).build();
+            User engineer = User.builder().name("Site Engineer A").email("engineer@prismo.com").password(defaultPassword).role(Role.SITE_ENGINEER).status(UserStatus.ACTIVE).build();
+            User client = User.builder().name("Client Corp").email("client@company.com").password(defaultPassword).role(Role.CLIENT).status(UserStatus.ACTIVE).build();
 
             userRepository.saveAll(List.of(ceo, admin, pm, engineer, client));
 

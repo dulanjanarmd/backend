@@ -29,8 +29,8 @@ public class AuthService {
     private final EmailService emailService;
 
     public AuthResponse register(RegisterRequest request) {
-        if (request.getRole() == Role.ADMIN) {
-            throw new RuntimeException("Admin accounts cannot be created via public registration. Please contact support.");
+        if (request.getRole() != Role.CLIENT) {
+            throw new RuntimeException("Only CLIENT accounts can be created via public registration. Please contact admin for other roles.");
         }
         
         if (repository.findByEmail(request.getEmail()).isPresent()) {
@@ -42,6 +42,7 @@ public class AuthService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(request.getRole())
+                .status(com.prismo.backend.model.UserStatus.ACTIVE)
                 .build();
         repository.save(user);
         

@@ -33,6 +33,7 @@ com\prismo\backend\model\Budget$BudgetBuilder.class
 com\prismo\backend\model\Milestone.class
 com\prismo\backend\model\ConsultationNote.class
 com\prismo\backend\dto\AuthResponse$AuthResponseBuilder.class
+com\prismo\backend\dto\ApprovalRequestDTO.class
 com\prismo\backend\model\ProgressLog.class
 com\prismo\backend\security\JwtAuthFilter.class
 com\prismo\backend\controller\ProgressController.class

@@ -36,6 +36,10 @@ public class User implements UserDetails {
     @Column(length = 50)
     private Role role;
 
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private UserStatus status;
+
     private String resetOtp;
     private java.time.LocalDateTime otpExpiryTime;
 
@@ -67,6 +71,6 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return status == null || status == UserStatus.ACTIVE;
     }
 }
