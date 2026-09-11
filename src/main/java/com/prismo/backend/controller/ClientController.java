@@ -21,4 +21,18 @@ public class ClientController {
     public ResponseEntity<List<ApprovalRequest>> getAllApprovals() {
         return ResponseEntity.ok(service.getAllApprovals());
     }
+
+    @PostMapping("/approvals")
+    @PreAuthorize("hasAnyRole('CEO', 'PROJECT_MANAGER', 'CLIENT')")
+    public ResponseEntity<ApprovalRequest> createApproval(@RequestBody com.prismo.backend.dto.ApprovalRequestDTO dto) {
+        return ResponseEntity.ok(service.createApproval(dto));
+    }
+
+    @PutMapping("/approvals/{id}")
+    @PreAuthorize("hasAnyRole('CEO', 'PROJECT_MANAGER', 'CLIENT')")
+    public ResponseEntity<ApprovalRequest> updateApproval(
+            @PathVariable Long id,
+            @RequestBody com.prismo.backend.dto.ApprovalRequestDTO dto) {
+        return ResponseEntity.ok(service.updateApproval(id, dto));
+    }
 }
