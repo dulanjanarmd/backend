@@ -5,9 +5,11 @@ import com.prismo.backend.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import com.prismo.backend.model.User;
 
 @RestController
 @RequestMapping("/api/client")
@@ -18,8 +20,8 @@ public class ClientController {
 
     @GetMapping("/approvals")
     @PreAuthorize("hasAnyRole('CEO', 'PROJECT_MANAGER', 'CLIENT')")
-    public ResponseEntity<List<ApprovalRequest>> getAllApprovals() {
-        return ResponseEntity.ok(service.getAllApprovals());
+    public ResponseEntity<List<ApprovalRequest>> getAllApprovals(@AuthenticationPrincipal User currentUser) {
+        return ResponseEntity.ok(service.getApprovalsForUser(currentUser));
     }
 
     @PostMapping("/approvals")

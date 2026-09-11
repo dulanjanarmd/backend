@@ -2,6 +2,7 @@ package com.prismo.backend.dto;
 
 import lombok.Data;
 import java.time.LocalDate;
+import com.fasterxml.jackson.databind.JsonNode;
 
 @Data
 public class ApprovalRequestDTO {
@@ -11,4 +12,7 @@ public class ApprovalRequestDTO {
     private Long projectId;
     private String status;
     private LocalDate dateRequested;
+    private JsonNode auditTrail;
+    private String feedback;
+    private String pmReply;
 }

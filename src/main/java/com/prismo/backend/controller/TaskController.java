@@ -51,4 +51,11 @@ public class TaskController {
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
         return ResponseEntity.ok(service.updateTask(id, task));
     }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('PROJECT_MANAGER', 'CEO')")
+    public ResponseEntity<Void> deleteTask(@PathVariable Long id) {
+        service.deleteTask(id);
+        return ResponseEntity.noContent().build();
+    }
 }

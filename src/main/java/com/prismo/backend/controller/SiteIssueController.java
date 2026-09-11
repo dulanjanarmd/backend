@@ -44,10 +44,11 @@ public class SiteIssueController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SiteIssue> updateIssue(
+    public ResponseEntity<Void> updateIssue(
             @PathVariable Long id,
             @RequestBody SiteIssue issue) {
-        return ResponseEntity.ok(service.updateIssue(id, issue));
+        service.updateIssue(id, issue);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")

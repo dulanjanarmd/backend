@@ -26,6 +26,11 @@ public class Document {
 
     private String fileUrl;
 
+    private String category;
+
+    @Column(columnDefinition = "TEXT")
+    private String note;
+
     @ManyToOne
     @JoinColumn(name = "uploaded_by_id")
     private User uploadedBy;

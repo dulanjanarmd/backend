@@ -24,6 +24,7 @@ com\prismo\backend\service\AuthService.class
 com\prismo\backend\security\JwtUtil.class
 com\prismo\backend\model\Task$TaskBuilder.class
 com\prismo\backend\model\UserStatus.class
+com\prismo\backend\dto\DocumentResponse$DocumentResponseBuilder.class
 com\prismo\backend\model\Budget.class
 com\prismo\backend\dto\RegisterRequest$RegisterRequestBuilder.class
 com\prismo\backend\dto\UpdateUserRequest.class
@@ -33,6 +34,7 @@ com\prismo\backend\controller\SiteIssueController.class
 com\prismo\backend\dto\PasswordResetRequest.class
 com\prismo\backend\controller\DebugController.class
 com\prismo\backend\model\Budget$BudgetBuilder.class
+com\prismo\backend\dto\DocumentResponse.class
 com\prismo\backend\model\Milestone.class
 com\prismo\backend\model\ConsultationNote.class
 com\prismo\backend\dto\AuthResponse$AuthResponseBuilder.class
@@ -40,6 +42,7 @@ com\prismo\backend\dto\ApprovalRequestDTO.class
 com\prismo\backend\dto\CreateUserRequest$CreateUserRequestBuilder.class
 com\prismo\backend\model\ProgressLog.class
 com\prismo\backend\security\JwtAuthFilter.class
+com\prismo\backend\controller\DocumentController.class
 com\prismo\backend\controller\ProgressController.class
 com\prismo\backend\dto\UpdateUserRequest$UpdateUserRequestBuilder.class
 com\prismo\backend\controller\TaskController.class

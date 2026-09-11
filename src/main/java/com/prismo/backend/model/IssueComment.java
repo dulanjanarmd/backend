@@ -33,11 +33,14 @@ public class IssueComment {
 
     private String commentType; // GENERAL, INFO_REQUEST, SOLUTION
 
+    private String photoUrl;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @PrePersist
     protected void onCreate() {
-        if (createdAt == null) createdAt = LocalDateTime.now();
+        if (createdAt == null)
+            createdAt = LocalDateTime.now();
     }
 }

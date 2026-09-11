@@ -9,8 +9,10 @@ import com.prismo.backend.repository.TaskRepository;
 import com.prismo.backend.repository.UserRepository;
 import com.prismo.backend.model.Milestone;
 import com.prismo.backend.repository.MilestoneRepository;
+import com.prismo.backend.repository.ProgressLogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class TaskService {
     private final ProjectRepository projectRepository;
     private final UserRepository userRepository;
     private final MilestoneRepository milestoneRepository;
+    private final ProgressLogRepository progressLogRepository;
 
     public List<Task> getAllTasks() {
         return repository.findAll();
@@ -49,12 +52,28 @@ public class TaskService {
     public Task updateTask(Long id, Task updates) {
         Task task = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Task not found"));
-        if (updates.getTitle() != null) task.setTitle(updates.getTitle());
-        if (updates.getDescription() != null) task.setDescription(updates.getDescription());
-        if (updates.getPriority() != null) task.setPriority(updates.getPriority());
-        if (updates.getDueDate() != null) task.setDueDate(updates.getDueDate());
-        if (updates.getStatus() != null) task.setStatus(updates.getStatus());
-        if (updates.getCompletionEvidence() != null) task.setCompletionEvidence(updates.getCompletionEvidence());
+        if (updates.getTitle() != null)
+            task.setTitle(updates.getTitle());
+        if (updates.getDescription() != null)
+            task.setDescription(updates.getDescription());
+        if (updates.getPriority() != null)
+            task.setPriority(updates.getPriority());
+        if (updates.getDueDate() != null)
+            task.setDueDate(updates.getDueDate());
+        if (updates.getStatus() != null)
+            task.setStatus(updates.getStatus());
+        if (updates.getCompletionEvidence() != null)
+            task.setCompletionEvidence(updates.getCompletionEvidence());
         return repository.save(task);
+    }
+
+    @Transactional
+    public void deleteTask(Long id) {
+        Task task = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Task not found"));
+        var progressLogs = progressLogRepository.findByTaskId(id);
+        progressLogs.forEach(log -> log.setTask(null));
+        progressLogRepository.saveAll(progressLogs);
+        repository.delete(task);
     }
 }

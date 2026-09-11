@@ -7,6 +7,7 @@ import com.prismo.backend.repository.ApprovalRequestRepository;
 import com.prismo.backend.repository.SiteIssueRepository;
 import com.prismo.backend.repository.ProgressLogRepository;
 import com.prismo.backend.repository.DocumentRepository;
+import com.prismo.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,7 @@ public class ProjectService {
     private final SiteIssueRepository issueRepository;
     private final ProgressLogRepository logRepository;
     private final DocumentRepository documentRepository;
+    private final UserRepository userRepository;
 
     public List<Project> getAllProjects() {
         return repository.findAll();
@@ -52,6 +54,10 @@ public class ProjectService {
         project.setEndDate(projectDetails.getEndDate());
         project.setStatus(projectDetails.getStatus());
         project.setProgressPercentage(projectDetails.getProgressPercentage());
+        if (projectDetails.getClient() != null && projectDetails.getClient().getId() != null) {
+            project.setClient(userRepository.findById(projectDetails.getClient().getId())
+                    .orElseThrow(() -> new RuntimeException("Client not found")));
+        }
         return repository.save(project);
     }
 

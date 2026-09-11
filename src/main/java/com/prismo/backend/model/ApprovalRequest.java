@@ -36,4 +36,13 @@ public class ApprovalRequest {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
+
+    @Column(columnDefinition = "TEXT")
+    private String auditTrail;
+
+    @Column(columnDefinition = "TEXT")
+    private String feedback;
+
+    @Column(columnDefinition = "TEXT")
+    private String pmReply;
 }

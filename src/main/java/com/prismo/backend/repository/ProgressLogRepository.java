@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface ProgressLogRepository extends JpaRepository<ProgressLog, Long> {
     List<ProgressLog> findByProjectId(Long projectId);
+
+    List<ProgressLog> findByTaskId(Long taskId);
 }

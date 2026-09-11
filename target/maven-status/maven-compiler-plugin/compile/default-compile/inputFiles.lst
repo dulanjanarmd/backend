@@ -14,6 +14,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\CreateUserRequest.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\ProjectController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\UserRepository.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\DocumentController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\DocumentRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\security\SecurityConfig.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\service\TaskService.java
@@ -49,6 +50,7 @@ C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\ba
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\controller\MilestoneController.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\InquiryRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\ResetPasswordRequest.java
+C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\DocumentResponse.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\dto\UpdateUserRequest.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\ProposalVersionRepository.java
 C:\Users\damin\Documents\prismo-construction\backend\src\main\java\com\prismo\backend\repository\TaskRepository.java
