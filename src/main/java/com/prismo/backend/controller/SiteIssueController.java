@@ -43,6 +43,19 @@ public class SiteIssueController {
         return ResponseEntity.ok(service.updateIssueStatus(id, status, assigneeId));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<SiteIssue> updateIssue(
+            @PathVariable Long id,
+            @RequestBody SiteIssue issue) {
+        return ResponseEntity.ok(service.updateIssue(id, issue));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteIssue(@PathVariable Long id) {
+        service.deleteIssue(id);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/{id}/comments")
     public ResponseEntity<List<com.prismo.backend.model.IssueComment>> getComments(@PathVariable Long id) {
         return ResponseEntity.ok(service.getComments(id));

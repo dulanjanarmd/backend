@@ -65,6 +65,26 @@ public class SiteIssueService {
         return repository.save(issue);
     }
 
+    @org.springframework.transaction.annotation.Transactional
+    public void deleteIssue(Long issueId) {
+        List<com.prismo.backend.model.IssueComment> comments = commentRepo.findByIssueIdOrderByCreatedAtAsc(issueId);
+        commentRepo.deleteAll(comments);
+        List<com.prismo.backend.model.IssueMeeting> meetings = meetingRepo.findByIssueIdOrderByCreatedAtAsc(issueId);
+        meetingRepo.deleteAll(meetings);
+        repository.deleteById(issueId);
+    }
+
+    public SiteIssue updateIssue(Long issueId, SiteIssue updatedData) {
+        SiteIssue issue = repository.findById(issueId).orElseThrow();
+        if(updatedData.getTitle() != null) issue.setTitle(updatedData.getTitle());
+        if(updatedData.getDescription() != null) issue.setDescription(updatedData.getDescription());
+        if(updatedData.getSeverity() != null) issue.setSeverity(updatedData.getSeverity());
+        if(updatedData.getLocation() != null) issue.setLocation(updatedData.getLocation());
+        if(updatedData.getEquipmentInvolved() != null) issue.setEquipmentInvolved(updatedData.getEquipmentInvolved());
+        if(updatedData.getEstimatedDelayDays() != null) issue.setEstimatedDelayDays(updatedData.getEstimatedDelayDays());
+        return repository.save(issue);
+    }
+
     @Autowired
     private com.prismo.backend.repository.IssueCommentRepository commentRepo;
 
