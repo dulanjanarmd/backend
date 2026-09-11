@@ -24,6 +24,14 @@ public class AdminService {
             throw new IllegalArgumentException("Admin accounts cannot be created via the admin interface. Please contact system administrator.");
         }
         
+        if (request.getRole() == Role.CEO) {
+            boolean ceoExists = userRepository.findAll().stream()
+                    .anyMatch(user -> user.getRole() == Role.CEO);
+            if (ceoExists) {
+                throw new IllegalArgumentException("CEO account already exists. System can have only one CEO.");
+            }
+        }
+        
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Email already in use");
         }
@@ -66,6 +74,16 @@ public class AdminService {
             if (user.getRole() == Role.ADMIN && request.getRole() != Role.ADMIN) {
                 throw new IllegalArgumentException("Cannot change admin role");
             }
+            
+            if (request.getRole() == Role.CEO && user.getRole() != Role.CEO) {
+                boolean ceoExists = userRepository.findAll().stream()
+                        .filter(u -> u.getId() != id)
+                        .anyMatch(u -> u.getRole() == Role.CEO);
+                if (ceoExists) {
+                    throw new IllegalArgumentException("CEO account already exists. System can have only one CEO.");
+                }
+            }
+            
             user.setRole(request.getRole());
         }
         
