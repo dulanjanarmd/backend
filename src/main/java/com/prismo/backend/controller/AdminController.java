@@ -2,6 +2,7 @@ package com.prismo.backend.controller;
 
 import com.prismo.backend.dto.CreateUserRequest;
 import com.prismo.backend.dto.UpdateUserRequest;
+import com.prismo.backend.dto.PasswordResetRequest;
 import com.prismo.backend.model.User;
 import com.prismo.backend.service.AdminService;
 import lombok.RequiredArgsConstructor;
@@ -61,8 +62,8 @@ public class AdminController {
     }
 
     @PatchMapping("/users/{id}/password")
-    public ResponseEntity<String> resetUserPassword(@PathVariable Long id, @RequestBody String newPassword) {
-        adminService.resetUserPassword(id, newPassword);
+    public ResponseEntity<String> resetUserPassword(@PathVariable Long id, @RequestBody PasswordResetRequest request) {
+        adminService.resetUserPassword(id, request.getNewPassword());
         return ResponseEntity.ok("Password reset successfully");
     }
 }

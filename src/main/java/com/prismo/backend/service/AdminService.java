@@ -20,17 +20,23 @@ public class AdminService {
     private final PasswordEncoder passwordEncoder;
 
     public User createUser(CreateUserRequest request) {
+        if (request.getRole() == Role.ADMIN) {
+            throw new IllegalArgumentException("Admin accounts cannot be created via the admin interface. Please contact system administrator.");
+        }
+        
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Email already in use");
         }
         
-        return User.builder()
+        User user = User.builder()
                 .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(request.getRole())
                 .status(UserStatus.ACTIVE)
                 .build();
+        
+        return userRepository.save(user);
     }
 
     public List<User> getAllUsers() {
@@ -57,6 +63,9 @@ public class AdminService {
             user.setEmail(request.getEmail());
         }
         if (request.getRole() != null) {
+            if (user.getRole() == Role.ADMIN && request.getRole() != Role.ADMIN) {
+                throw new IllegalArgumentException("Cannot change admin role");
+            }
             user.setRole(request.getRole());
         }
         
@@ -71,6 +80,10 @@ public class AdminService {
             throw new IllegalArgumentException("Cannot delete admin users");
         }
         
+        if (user.getRole() == Role.CEO) {
+            throw new IllegalArgumentException("Cannot delete CEO users");
+        }
+        
         userRepository.delete(user);
     }
 
@@ -80,6 +93,10 @@ public class AdminService {
         
         if (user.getRole() == Role.ADMIN) {
             throw new IllegalArgumentException("Cannot deactivate admin users");
+        }
+        
+        if (user.getRole() == Role.CEO) {
+            throw new IllegalArgumentException("Cannot deactivate CEO users");
         }
         
         user.setStatus(UserStatus.INACTIVE);
@@ -100,6 +117,10 @@ public class AdminService {
         
         if (user.getRole() == Role.ADMIN) {
             throw new IllegalArgumentException("Cannot suspend admin users");
+        }
+        
+        if (user.getRole() == Role.CEO) {
+            throw new IllegalArgumentException("Cannot suspend CEO users");
         }
         
         user.setStatus(UserStatus.SUSPENDED);
